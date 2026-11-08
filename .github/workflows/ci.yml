@@ -1,0 +1,30 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      # The suites are plain node:test files with no build step and no
+      # dependencies, so each one runs directly instead of through a runner.
+      - name: detection rules
+        run: node test/rules.test.mjs
+      - name: config, vault, rehydration, audit
+        run: node test/units.test.mjs
+      - name: llm/stream interception
+        run: node test/gateway.integration.test.mjs

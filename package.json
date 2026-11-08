@@ -1,0 +1,77 @@
+{
+  "name": "dsh-redact-gateway",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Egress redaction gateway: detects and replaces identity numbers, phone numbers, bank cards, emails, addresses, customer names and secrets with numbered placeholders before a model request leaves the machine, rehydrates the response, and keeps an encrypted local mapping table plus a tamper-evident audit log exportable as CSV.",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "luokexiaoguo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luokexiaoguo/dsh-redact-gateway.git"
+  },
+  "homepage": "https://github.com/luokexiaoguo/dsh-redact-gateway#readme",
+  "bugs": {
+    "url": "https://github.com/luokexiaoguo/dsh-redact-gateway/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "dlp",
+    "pii",
+    "redaction",
+    "pseudonymisation",
+    "security",
+    "audit"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "icon": "./icon.svg",
+  "scripts": {
+    "test": "node test/rules.test.mjs && node test/units.test.mjs && node test/gateway.integration.test.mjs"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "lib/config.js",
+    "lib/rules.js",
+    "lib/vault.js",
+    "lib/audit.js",
+    "lib/redact.js",
+    "lib/stream.js",
+    "lib/gateway.js",
+    "lib/http.js",
+    "lib/tools.js",
+    "client/client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "DESIGN.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  }
+}

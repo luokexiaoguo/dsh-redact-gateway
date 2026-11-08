@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Outbound redaction gateway",
+    "description": "Detects and replaces identity numbers, phone numbers, bank cards, email addresses, addresses, customer names and secrets before a request leaves this machine, so the model never sees the original text.",
+    "detail": "README.md"
+  }
+}

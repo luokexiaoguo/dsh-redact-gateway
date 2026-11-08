@@ -1,0 +1,9 @@
+# Normalize line endings for a cross-platform repository: the tests and the
+# plugin loader are line-ending agnostic, but a stable checkout keeps diffs
+# honest.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary

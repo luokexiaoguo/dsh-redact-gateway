@@ -1,0 +1,13 @@
+# 出网脱敏网关：在模型请求离开本机之前，把敏感数据换成编号占位符。
+#
+# 这一行把所有可调参数都留给你的 patch 层。取值与含义见 DESIGN.md 第 5 节：
+#   mode: enforce | audit | off
+#   onError: block | pass
+#   workspaces / categories / dictionary / allowlist
+#   placeholder / promptHint / streamRehydrate
+#   audit: { retentionDays, mask, dir }
+- insert:
+    - id: redact-gateway
+      name: dsh-redact-gateway
+      config:
+        mode: enforce
