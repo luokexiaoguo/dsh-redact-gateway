@@ -1,0 +1,21 @@
+# Submission entry for the curated registry behind the DSH plugin market.
+#
+# The market (DSH Discover tab, dsh-market) reads the catalog published from
+# https://github.com/awesome-dsh-plugin/awesome-dsh-plugin; a plugin is listed by
+# opening one pull request there that adds exactly this file at
+# data/plugins/<owner>__<repo>.yml. Nothing else is needed: the READMEs are
+# generated, and the site plus every market pick the entry up on the next build.
+#
+# Gate checked by their CI before review:
+#   - package.json declares dsh.bundle (this repo does) with cordis.patch.yml
+#   - the repository is at least one day old
+#   - the dsh-plugin topic is set on the repository
+#
+# Keep the description a factual claim about behaviour: it is checked against the
+# code, and overstating is the main reason a good plugin is sent back.
+url: https://github.com/luokexiaoguo/dsh-redact-gateway
+name: luokexiaoguo/dsh-redact-gateway
+category: security
+description:
+  en: 'Replaces identity numbers, phone numbers, bank cards, emails, addresses, customer names and secrets with numbered placeholders before a model request leaves the machine, restores the response, and keeps an encrypted local mapping plus a hash-chained audit log exportable as CSV.'
+  zh: '在模型请求离开本机前，把身份证、手机号、银行卡、邮箱、地址、客户名与密钥替换成编号占位符，响应回来自动回填；映射表加密存本机，每次替换写入带哈希链的审计日志，可导出 CSV。'
