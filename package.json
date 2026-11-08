@@ -31,7 +31,8 @@
   },
   "icon": "./icon.svg",
   "scripts": {
-    "test": "node test/rules.test.mjs && node test/units.test.mjs && node test/gateway.integration.test.mjs"
+    "check": "node scripts/check-fixtures.mjs",
+    "test": "node scripts/check-fixtures.mjs && node test/rules.test.mjs && node test/units.test.mjs && node test/gateway.integration.test.mjs"
   },
   "exports": {
     ".": "./index.js",

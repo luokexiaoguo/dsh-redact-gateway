@@ -98,7 +98,7 @@ const SECRET_HIT_CASES = [
   ['AWS AccessKey ACCA', 'ACCA' + 'IOSFODNN7EXAMPLE', 'secret.aws.access_key'],
   [
     'AWS SecretKey（带上下文）',
-    'aws_secret_access_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"',
+    'aws_secret_access_key = "wJalrXUtnFEMI/K7MDENG' + '/bPxRfiCYEXAMPLEKEY"',
     'secret.aws.secret_key',
   ],
   ['OpenAI sk-', 'sk-abc' + 'defghijklmnopqrstuvwx', 'secret.openai.key'],

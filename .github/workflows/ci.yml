@@ -20,6 +20,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+      # A DLP test corpus has to look like real secrets, so a complete token in
+      # the tree trips GitHub's own scanners. The guard fails the build instead.
+      - name: fixture guard (no complete token literals)
+        run: node scripts/check-fixtures.mjs
       # The suites are plain node:test files with no build step and no
       # dependencies, so each one runs directly instead of through a runner.
       - name: detection rules
