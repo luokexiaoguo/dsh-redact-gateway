@@ -180,8 +180,8 @@ test('vault: a wrong key is detected, not silently trusted', () => {
 test('vault: memory-only mode still masks and restores', () => {
   const vault = Vault.open({ dir: '', sessionId: 'memory', key: Buffer.alloc(32, 1), degraded: true });
   vault.setDelimiters({ open: '[', close: ']' });
-  const { placeholder } = vault.placeholder('secret', 'sk-live-abcdefghijklmnop');
-  assert.equal(vault.resolve(placeholder), 'sk-live-abcdefghijklmnop');
+  const { placeholder } = vault.placeholder('secret', 'sk-live-abcd' + 'efghijklmnop');
+  assert.equal(vault.resolve(placeholder), 'sk-live-abcd' + 'efghijklmnop');
   assert.equal(vault.flush(true), false);
 });
 

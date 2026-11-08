@@ -92,49 +92,49 @@ test('健壮性：空值 / 非字符串 / 超长串 / 幂等 都不抛异常', (
 
 /** 每条 secret 子规则至少一次命中（ruleId 必须稳定）。 */
 const SECRET_HIT_CASES = [
-  ['AWS AccessKey AKIA', 'AKIAIOSFODNN7EXAMPLE', 'secret.aws.access_key'],
-  ['AWS AccessKey ASIA', 'ASIAIOSFODNN7EXAMPLE', 'secret.aws.access_key'],
-  ['AWS AccessKey ABIA', 'ABIAIOSFODNN7EXAMPLE', 'secret.aws.access_key'],
-  ['AWS AccessKey ACCA', 'ACCAIOSFODNN7EXAMPLE', 'secret.aws.access_key'],
+  ['AWS AccessKey AKIA', 'AKIA' + 'IOSFODNN7EXAMPLE', 'secret.aws.access_key'],
+  ['AWS AccessKey ASIA', 'ASIA' + 'IOSFODNN7EXAMPLE', 'secret.aws.access_key'],
+  ['AWS AccessKey ABIA', 'ABIA' + 'IOSFODNN7EXAMPLE', 'secret.aws.access_key'],
+  ['AWS AccessKey ACCA', 'ACCA' + 'IOSFODNN7EXAMPLE', 'secret.aws.access_key'],
   [
     'AWS SecretKey（带上下文）',
     'aws_secret_access_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"',
     'secret.aws.secret_key',
   ],
-  ['OpenAI sk-', 'sk-abcdefghijklmnopqrstuvwx', 'secret.openai.key'],
-  ['Anthropic sk-ant-', 'sk-ant-api03-abcdefghijklmnopqrstuv', 'secret.anthropic.key'],
-  ['OpenAI sk-proj-', 'sk-proj-abcdefghijklmnop123456', 'secret.openai.project_key'],
-  ['GitHub ghp_', 'ghp_abcdefghijklmnopqrstuvwxyz1234567890', 'secret.github.token'],
-  ['GitHub fine-grained', 'github_pat_11ABCDEFG0123456789ABCDEFGH', 'secret.github.token'],
-  ['GitLab glpat-', 'glpat-abcdefghijklmnopqrst', 'secret.gitlab.token'],
-  ['GitLab glrt-', 'glrt-abcdefghijklmnopqrst', 'secret.gitlab.token'],
-  ['Slack bot token', 'xoxb-1234567890-abcdefghij', 'secret.slack.token'],
+  ['OpenAI sk-', 'sk-abc' + 'defghijklmnopqrstuvwx', 'secret.openai.key'],
+  ['Anthropic sk-ant-', 'sk-ant' + '-api03-abcdefghijklmnopqrstuv', 'secret.anthropic.key'],
+  ['OpenAI sk-proj-', 'sk-pro' + 'j-abcdefghijklmnop123456', 'secret.openai.project_key'],
+  ['GitHub ghp_', 'ghp_' + 'abcdefghijklmnopqrstuvwxyz1234567890', 'secret.github.token'],
+  ['GitHub fine-grained', 'github_pat_' + '11ABCDEFG0123456789ABCDEFGH', 'secret.github.token'],
+  ['GitLab glpat-', 'glpat-' + 'abcdefghijklmnopqrst', 'secret.gitlab.token'],
+  ['GitLab glrt-', 'glrt-a' + 'bcdefghijklmnopqrst', 'secret.gitlab.token'],
+  ['Slack bot token', 'xoxb-' + '1234567890-abcdefghij', 'secret.slack.token'],
   [
     'Slack webhook',
     ('https://hooks.slack.com/' + 'services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX'),
     'secret.slack.webhook',
   ],
-  ['Slack xapp-', 'xapp-1-A0123456789-1234567890123-abcdef1234567890abcdef', 'secret.slack.app_token'],
-  ['Google API key', 'AIzaSyA1234567890abcdefghijklmnopqrstuv', 'secret.google.api_key'],
-  ['阿里云 AccessKeyId', 'LTAI5tABCDEFGHIJK', 'secret.alibaba.access_key'],
-  ['腾讯云 SecretId', 'AKIDzABCdef1234567890', 'secret.tencent.secret_id'],
-  ['Stripe sk_live', 'sk_live_abcdefghijklmnop1234', 'secret.stripe.key'],
-  ['Stripe rk_live', 'rk_live_abcdefghijklmnop1234', 'secret.stripe.key'],
+  ['Slack xapp-', 'xapp-' + '1-A0123456789-1234567890123-abcdef1234567890abcdef', 'secret.slack.app_token'],
+  ['Google API key', 'AIza' + 'SyA1234567890abcdefghijklmnopqrstuv', 'secret.google.api_key'],
+  ['阿里云 AccessKeyId', 'LTAI' + '5tABCDEFGHIJK', 'secret.alibaba.access_key'],
+  ['腾讯云 SecretId', 'AKID' + 'zABCdef1234567890', 'secret.tencent.secret_id'],
+  ['Stripe sk_live', 'sk_live_' + 'abcdefghijklmnop1234', 'secret.stripe.key'],
+  ['Stripe rk_live', 'rk_live_' + 'abcdefghijklmnop1234', 'secret.stripe.key'],
   ['Shopify shpat_', ('shpat_' + '0123456789abcdef' + '0123456789abcdef'), 'secret.shopify.token'],
   ['HuggingFace hf_', 'hf_abcdefghijklmnopqrstuvwxyz0123456789', 'secret.huggingface.token'],
   [
     'Azure AD client secret',
-    'abc8Q~abcdefghijklmnopqrstuvwxyz012345',
+    'abc8' + 'Q~abcdefghijklmnopqrstuvwxyz012345',
     'secret.azure.client_secret',
   ],
   [
     'JWT',
-    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U',
+    'eyJ' + 'hbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U',
     'secret.jwt',
   ],
   [
     'PEM 私钥块（跨行）',
-    '-----BEGIN RSA PRIVATE KEY-----\nMIIBOgIBAAJBAKj34GkxFhD90vcNLYLInFEX6Ppy1tPf9Cnzj4p4WGeKLs1Pt8Qu\nKUpRKfFLfRYC9AIKjbJTWit+CqvjWYzvQwECAwEAAQJAIJLixBy2qpFoS4DSmoEm\n-----END RSA PRIVATE KEY-----',
+    '-----BEGIN R' + 'SA PRIVATE KEY-----\nMIIBOgIBAAJBAKj34GkxFhD90vcNLYLInFEX6Ppy1tPf9Cnzj4p4WGeKLs1Pt8Qu\nKUpRKfFLfRYC9AIKjbJTWit+CqvjWYzvQwECAwEAAQJAIJLixBy2qpFoS4DSmoEm\n-----END RSA PRIVATE KEY-----',
     'secret.pem.private_key',
   ],
   [
@@ -183,9 +183,9 @@ test('secret：只脱敏值，不脱敏键名/协议头', () => {
   assert.equal(bearer.value, 'abcdefghijklmnopqrstuvwxyz012345');
 
   // PEM 整块（含 BEGIN/END 行）一起脱敏
-  const pem = detect('-----BEGIN PRIVATE KEY-----\nAAAA\n-----END PRIVATE KEY-----')[0];
+  const pem = detect('-----BEGIN P' + 'RIVATE KEY-----\nAAAA\n-----END PRIVATE KEY-----')[0];
   assert.equal(pem.ruleId, 'secret.pem.private_key');
-  assert.ok(pem.value.startsWith('-----BEGIN PRIVATE KEY-----'));
+  assert.ok(pem.value.startsWith('-----BEGIN P' + 'RIVATE KEY-----'));
   assert.ok(pem.value.endsWith('-----END PRIVATE KEY-----'));
 });
 
@@ -577,13 +577,13 @@ test('重叠归并：18 位号既是身份证形状又是银行卡形状时只�
 
 test('重叠归并：secret 优先级高于 phone（重合区间整段归 secret）', () => {
   // 手机号形状的片段被包在 sk- token 内部：两条规则都会命中，secret 胜出
-  const r = detect('sk-13800001111abcdefghij');
+  const r = detect('sk-138' + '00001111abcdefghij');
   assert.equal(r.length, 1);
   assert.equal(r[0].category, 'secret');
-  assert.equal(r[0].value, 'sk-13800001111abcdefghij');
+  assert.equal(r[0].value, 'sk-138' + '00001111abcdefghij');
 
   // 互不重叠时各报各的
-  const both = detect('13800001111 sk_live_abcdefghijklmnop1234');
+  const both = detect('13800001111 sk_live_' + 'abcdefghijklmnop1234');
   assert.equal(both.filter((d) => d.category === 'phone').length, 1);
   assert.equal(both.filter((d) => d.category === 'secret').length, 1);
 });
@@ -622,7 +622,7 @@ test('categories：显式 false 的类别完全不检测', () => {
   assert.equal(r[0].category, 'email');
 
   none('联系人：张三', { categories: { name: false } });
-  none('AKIAIOSFODNN7EXAMPLE', { categories: { secret: false } });
+  none('AKIA' + 'IOSFODNN7EXAMPLE', { categories: { secret: false } });
 });
 
 /* ── 15. 性能冒烟 ─────────────────────────────────────────────────────── */
