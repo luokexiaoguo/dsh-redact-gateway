@@ -51,12 +51,12 @@
 ## 2. 安装
 
 ```bash
-# 目录安装（开发/内网分发）
-# 把整个 packages/redact-gateway 目录交给 DSH：
-#   plugin_manager action=install_bundle target=<绝对路径>
-
-# npm（发布后）
+# 已发布到 npm（推荐）—— https://www.npmjs.com/package/dsh-redact-gateway
 #   plugin_manager action=install_bundle target=dsh-redact-gateway
+
+# 目录安装（开发/内网分发）
+#   npm install            # 或者 clone 仓库
+#   plugin_manager action=install_bundle target=<包的绝对路径>
 ```
 
 装好后在 **设置 → 出网脱敏网关** 打开页面，可以看状态、切换模式、按类别开关、导出审计 CSV。

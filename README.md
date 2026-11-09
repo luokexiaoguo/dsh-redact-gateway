@@ -60,11 +60,12 @@ anonymisation in a security review.
 ## 2. Install
 
 ```bash
-# directory install (development / internal distribution)
-#   plugin_manager action=install_bundle target=<absolute path to this package>
-
-# npm (once published)
+# published package (recommended) — https://www.npmjs.com/package/dsh-redact-gateway
 #   plugin_manager action=install_bundle target=dsh-redact-gateway
+
+# directory install (development / internal distribution)
+#   npm install            # or clone the repo
+#   plugin_manager action=install_bundle target=<absolute path to the package>
 ```
 
 Then open **Settings → Egress redaction gateway** to see state, switch modes,
